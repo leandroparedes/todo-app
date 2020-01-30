@@ -96,7 +96,7 @@
                             color="success"
                             class="ml-2"
                             @click="showCompleted = !showCompleted"
-                            :title="showCompleted ? 'Ocultar completados' : 'Mostrar completados'"
+                            :title="showCompleted ? 'Hide completed todos' : 'Show completed todos'"
                         >
                             <v-icon>
                                 {{ showCompleted ? 'mdi-eye-off-outline' : 'mdi-eye-outline' }}
@@ -141,6 +141,18 @@
                             </v-btn>
                         </v-list-item-action>
                     </v-list-item>
+
+                    <v-divider></v-divider>
+                    <div class="d-flex justify-center mt-4 mb-2">
+                        <v-btn
+                            small
+                            color="error"
+                            title="Delete all completed todos"
+                            @click="removeAllCompleted"
+                        >
+                            <v-icon class="mr-1">mdi-trash-can-outline</v-icon> Delete all completed
+                        </v-btn>
+                    </div>
                 </div>
             </v-list>
         </v-card>
@@ -188,8 +200,13 @@ export default {
             this.$store.commit('toggle_completed', todoID);
         },
         remove: function (todoID) {
-            if (confirm('¿Está seguro de eliminar este todo?')) {
+            if (confirm('Delete this todo?')) {
                 this.$store.commit('delete_todo', todoID);
+            }
+        },
+        removeAllCompleted: function () {
+            if (confirm('Delete all todos?')) {
+                this.$store.commit('delete_completed_todos');
             }
         }
     },

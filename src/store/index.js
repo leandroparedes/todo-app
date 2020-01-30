@@ -20,6 +20,9 @@ export default new Vuex.Store({
         },
         delete_todo (state, todoID) {
             state.todos = state.todos.filter(todo => todo.id != todoID);
+        },
+        delete_completed_todos (state) {
+            state.todos = state.todos.filter(todo => todo.completed == false);
         }
     },
     actions: {
