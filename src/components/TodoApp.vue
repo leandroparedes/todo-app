@@ -86,17 +86,9 @@
                 <v-subheader class="d-flex justify-space-between align-center">
                     <span class="green--text font-weight-bold">COMPLETED</span>
                     <div>
-                        <v-chip
-                            outlined
-                            small
-                            color="green"
-                        >
-                            {{ completedTodos.length }}
-                        </v-chip>
                         <v-btn
                             icon
                             color="success"
-                            class="ml-2"
                             @click="showCompleted = !showCompleted"
                             :title="showCompleted ? 'Hide completed todos' : 'Show completed todos'"
                         >
@@ -104,6 +96,14 @@
                                 {{ showCompleted ? 'mdi-eye-off-outline' : 'mdi-eye-outline' }}
                             </v-icon>
                         </v-btn>
+                        <v-chip
+                            outlined
+                            small
+                            color="green"
+                            class="ml-2"
+                        >
+                            {{ completedTodos.length }}
+                        </v-chip>
                     </div>
                 </v-subheader>
 
