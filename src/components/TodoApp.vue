@@ -83,50 +83,65 @@
             <v-list two-line subheader>
                 <v-subheader class="d-flex justify-space-between align-center">
                     <span class="green--text font-weight-bold">COMPLETED</span>
-                    <v-chip
-                        outlined
-                        small
-                        color="green"
-                    >
-                        {{ completedTodos.length }}
-                    </v-chip>
+                    <div>
+                        <v-chip
+                            outlined
+                            small
+                            color="green"
+                        >
+                            {{ completedTodos.length }}
+                        </v-chip>
+                        <v-btn
+                            icon
+                            color="success"
+                            class="ml-2"
+                            @click="showCompleted = !showCompleted"
+                            :title="showCompleted ? 'Ocultar completados' : 'Mostrar completados'"
+                        >
+                            <v-icon>
+                                {{ showCompleted ? 'mdi-eye-off-outline' : 'mdi-eye-outline' }}
+                            </v-icon>
+                        </v-btn>
+                    </div>
                 </v-subheader>
 
-                <v-divider></v-divider>
+                <div v-if="showCompleted">
+                    <v-divider></v-divider>
 
-                <v-list-item
-                    v-for="todo in completedTodos"
-                    :key="todo.id"
-                >
-                    <v-list-item-content>
-                        <v-list-item-title>{{ todo.todo }}</v-list-item-title>
-                        <v-list-item-subtitle class="caption font-weight-thin">Completed {{ todo.completedAt | moment("DD-MM-YYYY") }}</v-list-item-subtitle>
-                    </v-list-item-content>
+                    <v-list-item
+                        v-for="todo in completedTodos"
+                        :key="todo.id"
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title>{{ todo.todo }}</v-list-item-title>
+                            <v-list-item-subtitle class="caption font-weight-thin">Completed {{ todo.completedAt | moment("DD-MM-YYYY") }}</v-list-item-subtitle>
+                        </v-list-item-content>
 
-                    <v-list-item-action class="d-flex flex-row">
-                        <v-btn
-                            icon
-                            fab
-                            x-small
-                            title="Mark as uncompleted"
-                            color="red"
-                            @click="toggleCompleted(todo.id)"
-                        >
-                            <v-icon color="red lighten-1">mdi-redo-variant</v-icon>
-                        </v-btn>
+                        <v-list-item-action class="d-flex flex-row">
+                            <v-btn
+                                icon
+                                fab
+                                x-small
+                                title="Mark as uncompleted"
+                                color="red"
+                                @click="toggleCompleted(todo.id)"
+                            >
+                                <v-icon color="red lighten-1">mdi-redo-variant</v-icon>
+                            </v-btn>
 
-                        <v-btn
-                            icon
-                            fab
-                            x-small
-                            title="Delete this todo"
-                            color="red"
-                            @click="remove(todo.id)"
-                        >
-                            <v-icon color="red lighten-1">mdi-trash-can-outline</v-icon>
-                        </v-btn>
-                    </v-list-item-action>
-                </v-list-item>
+                            <v-btn
+                                icon
+                                fab
+                                x-small
+                                title="Delete this todo"
+                                color="red"
+                                @click="remove(todo.id)"
+                            >
+                                <v-icon color="red lighten-1">mdi-trash-can-outline</v-icon>
+                            </v-btn>
+                        </v-list-item-action>
+                    </v-list-item>
+                </div>
             </v-list>
         </v-card>
     </v-container>
@@ -145,7 +160,8 @@ export default {
                 v => !!v,
                 v => v.length <= 50
             ],
-            loading: false
+            loading: false,
+            showCompleted: false
         };
     },
     methods: {
