@@ -55,7 +55,9 @@
                 >
                     <v-list-item-content>
                         <v-list-item-title>{{ todo.todo }}</v-list-item-title>
-                        <v-list-item-subtitle class="caption font-weight-thin">Added {{ todo.createdAt | moment("DD-MM-YYYY") }}</v-list-item-subtitle>
+                        <v-list-item-subtitle class="caption font-weight-thin">
+                            Added on {{ todo.createdAt | moment("MMMM Do") }}
+                        </v-list-item-subtitle>
                     </v-list-item-content>
 
                     <v-list-item-action>
@@ -114,7 +116,9 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>{{ todo.todo }}</v-list-item-title>
-                            <v-list-item-subtitle class="caption font-weight-thin">Completed {{ todo.completedAt | moment("DD-MM-YYYY") }}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="caption font-weight-thin">
+                                Completed on {{ todo.completedAt | moment("MMMM Do") }}
+                            </v-list-item-subtitle>
                         </v-list-item-content>
 
                         <v-list-item-action class="d-flex flex-row">
