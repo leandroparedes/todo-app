@@ -3,8 +3,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import UUID from 'vue-uuid';
 
 Vue.use(require('vue-moment'));
+
+Vue.use(UUID);
 
 Vue.config.productionTip = false;
 

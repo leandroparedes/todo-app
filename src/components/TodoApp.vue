@@ -155,7 +155,7 @@ export default {
             if (this.$refs.form.validate()) {
 
                 const todo = {
-                    id: this.todos.length + 1,
+                    id: this.$uuid.v1(),
                     todo: this.todo,
                     completed: false,
                     createdAt: Date.now()
