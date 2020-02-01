@@ -76,12 +76,14 @@
 
             <div class="d-flex justify-center my-3">
                 <v-btn
+                    text
                     small
                     color="error"
                     title="Delete all completed todos"
                     @click="removeAllCompleted"
+                    class="overline"
                 >
-                    <v-icon class="mr-1">mdi-trash-can-outline</v-icon> Delete all completed
+                    Delete all completed
                 </v-btn>
             </div>
         </div>
